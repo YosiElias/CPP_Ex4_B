@@ -14,8 +14,8 @@ namespace coup {
 
     public:
         Ambassador(Game &g, std::string name):Player(g, name){ this->_role="Ambassador";};
-        void transfer(Player from, Player to);
-        void block(Player p);
+        void transfer(Player &from, Player &to);
+        void block(Player &p);
 
     }; // end of class Ambassador
 }

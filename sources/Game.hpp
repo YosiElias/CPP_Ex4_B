@@ -39,7 +39,7 @@ namespace coup {
         std::vector<std::string> players();
         std::string winner();
 //        int add_player(const std::string &p);   //Todo: not needed
-        int add_player(Player* Pplayer);
+        void add_player(Player* Pplayer);
         void end_turn(){
             this->_turn = (this->_turn+1)% this->_players_names.size();
         };

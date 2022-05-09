@@ -11,4 +11,7 @@ namespace coup {
 		Captain_steal,
         No_action
 	};
+//    enum class Block_Action {
+//        Duke_block
+//    };
 }

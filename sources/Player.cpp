@@ -47,7 +47,7 @@ namespace coup{
          this->_Pgame->end_turn();
      }
 
-    void Player::coup(Player p) {
+    void Player::coup(Player &p) {
         this->check_is_turn();
         if (this->_coins < 7){
             throw std::logic_error("not have coins to coup!");
@@ -93,6 +93,15 @@ namespace coup{
 
     void Player::cahnge2dead() {    //Todo: not needed
         this->_is_dead = true;
+    }
+
+    void Player::back2life() {
+        this->_is_dead = false;
+    }
+
+    void Player::block_foreign_aid() {
+        this->_coins -= 2;
+        this->_last_action = Action::No_action; //because get blocked
     }
 
 }

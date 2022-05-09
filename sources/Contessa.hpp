@@ -14,7 +14,7 @@ namespace coup {
 
     public:
         Contessa(Game &g, std::string name):Player(g, name){ this->_role="Contessa";};
-        void block(Player p);
+        void block(Player &p);
 
     }; // end of class Contessa
 }

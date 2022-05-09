@@ -18,12 +18,20 @@ namespace coup{
 
 
     void Duke::tax() {
-        this->_coins = this->_coins +3;
+        this->check_is_turn();
+        if (this->_coins >= 10){
+            throw std::logic_error("have to do a coup!");
+        }
+        this->_coins = this->_coins + 3;
         this->_last_action = Action::Duke_tax;
+        this->_Pgame->end_turn();
     }
 
-    void Duke::block(Player p) {
-        p.income();
-        this->income();
+    void Duke::block(Player &p) {
+        if (p.get_action() != Action::foreign_aid){
+            throw std::logic_error("did not did foreign_aid");
+        }
+        p.block_foreign_aid();  //take 2 coins from 'p'
     }
 }
+

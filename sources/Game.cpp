@@ -43,7 +43,13 @@ namespace coup{
         return this->_players.at(this->_turn);
     }
     vector<string> Game::players() {
-        return this->_players_names;
+        vector<string> ans = {};
+        for (size_t i = 0; i < players().size(); ++i) {
+            if (!this->_players.at(i)->is_dead()){
+                ans.push_back(this->_players.at(i)->get_name());
+            }
+        }
+        return ans;
     }
 
     string Game::winner() {
@@ -97,7 +103,7 @@ namespace coup{
 //        return false;
 //    }
 
-    int Game::add_player(Player *Pplayer) {
+    void Game::add_player(Player *Pplayer) {
         this->_players.push_back(Pplayer);
 //        int id = this->_id;
 //        this->_id++;
