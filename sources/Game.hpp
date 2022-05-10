@@ -30,11 +30,7 @@ namespace coup {
         unsigned long _turn;
         const size_t INF = 9999;
         const size_t MAX_PLAYERS = 6;
-//        std::vector<std::shared_ptr<Player>> _players;
-//        int _id;      //Todo: not needed
-//        std::vector<int> _players_ID;     //Todo: not needed
-//        std::vector<bool> _is_dead;       //Todo: not needed
-//        std::string _winner;      //Todo: not needed
+
 
     public:
         Game();
@@ -52,8 +48,6 @@ namespace coup {
         std::vector<Player *> get_Pp(){return this->_players;};
         bool start = false;
 
-//        int add_player(const std::string &p);   //Todo: not needed
-//        bool check_player_is_dead(Player *Pp);    //Todo: not needed
 
     }; // end of class Game
 }
@@ -78,6 +72,6 @@ namespace coup {
 ////
 //
 //#ifndef PART_A_GAME_HPP
-//#define PART_A_GAME_HPP
+//#define PART_A_GAME_HPP  //deep c0py
 //
 //#endif //PART_A_GAME_HPP

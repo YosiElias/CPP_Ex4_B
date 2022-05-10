@@ -73,13 +73,13 @@ namespace coup{
 
 //    Player::Player() {
 //        this->_name = "";
-//        this->_coins = 0;
+//        this->_coins = 0;//31615
 //        this->_last_action = Action::No_action;
 //    }
 
     void Player::check_is_turn() {
         if (this->Pgame->get_Pp().size()==1 or this->Pgame->get_Pp().size()>MAX_PLAYERS){
-            throw std::logic_error("more then 6 or less then 2  ");
+            throw std::logic_error("more then 6 or less then 2  ");//y0si
         }
         if (this->Pgame->turn_pointer() != this){
             while (this->Pgame->turn_pointer()->is_dead()){    //remove dead players and loop on it
@@ -90,7 +90,7 @@ namespace coup{
                 throw std::logic_error("not his turn!");
             }
         }
-        this->Pgame->start = true;
+        this->Pgame->start = true;  //deep c0py
 //        if (this->_is_dead){  //Todo: not needed
 //            this->Pgame.remove_player(this->_id, this->_name);  //remove player in his turn
 //            throw std::logic_error("he is dead");

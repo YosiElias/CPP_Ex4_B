@@ -36,9 +36,6 @@ namespace coup {
     public:
         Player(Game &g, std::string& name);
         ~Player() = default;
-//            delete this->_steal_from;
-//            std::cout << "delete p for player" << std::endl;
-//        };
         void income();
         void foreign_aid();
         virtual void coup(Player &p);    //Todo: virtual - maybe not need
@@ -52,10 +49,9 @@ namespace coup {
         void block_foreign_aid();
         void less_coin(){this->_coins --;};
         void add_coin(){this->_coins ++;};
-        Action _last_action;
+        Action _last_action;  //deep c0py
         Player * get_steal_from(){return this->_steal_from;}
 
 
-//        Player();
     }; // end of class Player
 }

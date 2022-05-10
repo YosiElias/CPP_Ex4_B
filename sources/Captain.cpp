@@ -45,7 +45,7 @@ namespace coup{
             throw std::logic_error("p is not a Captain");
         }
         if (this->role() != "Captain"){
-            throw std::logic_error("ONLY CHECK");
+            throw std::logic_error("ONLY CHECK");//y0si
         }
         Captain* capt = dynamic_cast<Captain*>(&p);
         Player* steal_from = capt->get_steal_from();

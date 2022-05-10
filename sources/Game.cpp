@@ -16,10 +16,7 @@ namespace coup{
     Game::Game() {
         this->_players_names = {};
         this->_players = {};
-//        this->_players_ID = {};
-//        this->_is_dead = {};
         this->_turn = 0;
-//        this->_id = 0;
     }
 
     string Game::turn() {
@@ -27,7 +24,6 @@ namespace coup{
             throw logic_error("no players");
         }
         while (this->_players.at(this->_turn)->is_dead()){   //remove dead players and loop on it
-//            this->remove_player(*this->_players.at(this->_turn));
             this->end_turn();
         }
         return this->_players_names.at(this->_turn);
@@ -37,7 +33,6 @@ namespace coup{
             throw logic_error("no players");
         }
         while (this->_players.at(this->_turn)->is_dead()){    //remove dead players and loop on it
-//            this->remove_player(*this->_players.at(this->_turn));
             this->end_turn();
         }
         return this->_players.at(this->_turn);
@@ -60,7 +55,7 @@ namespace coup{
         string win;
         if (this->_players_names.size() != 1){
             for (size_t i = 0; i < this->_players.size(); ++i) {    //check if there is dead players on the list
-                if (!this->_players.at(i)->is_dead()){
+                if (!this->_players.at(i)->is_dead()){  //deep c0py
                     players_life++;
                     win = this->_players.at(i)->get_name();
                 }
@@ -72,21 +67,11 @@ namespace coup{
         return win;
     }
 
-//    int Game::add_player(const string &p) {   //Todo: not needed
-//        int id = this->_id;
-//        this->_id++;
-//        this->_players_names.push_back(p);
-//        this->_players_ID.push_back(id);
-//        this->_is_dead.push_back(false);
-//        return id;
-//    }
 
     void Game::remove_player(Player &Pp) {
         int index = find_index_of_player(Pp);
         this->_players_names.erase(this->_players_names.begin() + index);
         this->_players.erase(this->_players.begin() + index);
-//        delete this->_players.at((size_t)index);    //Todo: check deleted
-//        this->_is_dead.erase(this->_is_dead.begin() + index);
     }
 
     int Game::find_index_of_player(Player &Pp) {
@@ -102,12 +87,7 @@ namespace coup{
         return (int)index;
     }
 
-//    bool Game::check_player_is_dead(Player *Pp) { //Todo: not needed
-//        if (Pp->is_dead()){
-//            return true;
-//        }
-//        return false;
-//    }
+
 
     void Game::add_player(Player & Pplayer) {
         if (this->get_Pp().size() >= MAX_PLAYERS){
@@ -118,24 +98,7 @@ namespace coup{
         }
         this->_players.push_back(&Pplayer);
         this->_players_names.push_back(Pplayer.get_name());
-//        int id = this->_id;
-//        this->_id++;
-//        this->_players_ID.push_back(id);
-//        this->_is_dead.push_back(false);
     }
 
-//    Game::~Game() {
-////        for (size_t i = 0; i < this->_players.size(); ++i) {
-////            free( this->_players.at(i));
-////        }
-////        Game* pTemp = this;
-//        for (Player* p : this->_players)
-//            delete p;
-//        cout << "delete p for Game" << endl;
-//        this->_players.clear();
-//        this->_players_names.clear();
-////        delete pTemp;
-//
-//    }
 
 }

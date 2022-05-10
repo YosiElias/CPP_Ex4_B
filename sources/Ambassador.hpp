@@ -16,7 +16,7 @@ namespace coup {
         Ambassador(Game &g, std::string name):Player(g, name){ this->_role="Ambassador";};
         ~Ambassador() = default;
         void transfer(Player &from, Player &to);
-        void block(Player &p);
+        void block(Player &p);//y0si
 
     }; // end of class Ambassador
 }
