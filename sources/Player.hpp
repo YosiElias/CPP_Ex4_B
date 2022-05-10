@@ -9,6 +9,7 @@
 #include "Action.hpp"
 #include <iostream>
 #include <vector>
+#include <memory>
 namespace coup {
     class Game;
 //    class Player;
@@ -17,23 +18,32 @@ namespace coup {
 
     private:
         std::string _name;
-        int _id;
 
 
     protected:
         std::string _role;
         int _coins;
         bool _is_dead;
-        Game * _Pgame;
-        void check_is_turn();
+        Game * Pgame;
+        void check_is_turn();;
+        Player * _steal_from;
+        Player * _killed;
+        const size_t NEED_COUP = 10;
+        const size_t CAN_COUP = 7;
+        const size_t MAX_PLAYERS = 6;
+
 
     public:
         Player(Game &g, std::string& name);
+        ~Player() = default;
+//            delete this->_steal_from;
+//            std::cout << "delete p for player" << std::endl;
+//        };
         void income();
         void foreign_aid();
         virtual void coup(Player &p);    //Todo: virtual - maybe not need
         std::string role();
-        int coins();
+        int coins()const;
         void cahnge2dead();
         void back2life();
         bool is_dead() const{return this->_is_dead;};
@@ -43,8 +53,9 @@ namespace coup {
         void less_coin(){this->_coins --;};
         void add_coin(){this->_coins ++;};
         Action _last_action;
+        Player * get_steal_from(){return this->_steal_from;}
 
 
-        Player();
+//        Player();
     }; // end of class Player
 }

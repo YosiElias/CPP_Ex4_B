@@ -20,7 +20,7 @@ namespace coup{
 
     void Ambassador::transfer(Player &from, Player &to) {
         this->check_is_turn();
-        if (this->_coins >= 10){
+        if (this->_coins >= NEED_COUP){
             throw std::logic_error("have to do a coup!");
         }
         if (from.coins()<1){
@@ -29,7 +29,7 @@ namespace coup{
         from.less_coin();
         to.add_coin();
         this->_last_action = Action::Ambassador_transfer;
-        this->_Pgame->end_turn();
+        this->Pgame->end_turn();
     }
 
     void Ambassador::block(Player &p) {
@@ -39,18 +39,21 @@ namespace coup{
         if (p.role() != "Captain"){
             throw std::logic_error("p is not a Captain");
         }
-        Captain* capt = dynamic_cast<Captain*>(&p);
-        Player* steal_from = capt->get_steal_from();
-        if (capt->is_dead() or steal_from->is_dead()){
+        if (this->role() != "Ambassador"){
+            throw std::logic_error("ONLY CHECK");
+        }
+//        Captain* capt = dynamic_cast<Captain*>(&p);
+        Player* steal_from = p.get_steal_from();
+        if (p.is_dead() or steal_from->is_dead()){
             throw std::logic_error("there is one dead so can't do block");
         }
-        if (capt->coins() < 2){
+        if (p.coins() < 2){
             throw std::logic_error("steal_from not have 2 coins (*need to check what not right)");
         }
         steal_from->add_coin();
         steal_from->add_coin();
-        capt->less_coin();
-        capt->less_coin();
-        capt->_last_action = Action::No_action; //already get blocked
+        p.less_coin();
+        p.less_coin();
+        p._last_action = Action::No_action; //already get blocked
     }
 }

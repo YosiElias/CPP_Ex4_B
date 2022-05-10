@@ -20,16 +20,16 @@ namespace coup{
         if (this->_coins < 3){
             throw std::logic_error("not have coins to coup!");
         }
-        if (this->_coins >= 7){
+        if (this->_coins >= CAN_COUP){
             if (p.is_dead()){
                 throw std::logic_error("he is already dead");
             }
             p.cahnge2dead();
-            this->_coins -= 7;
+            this->_coins -= CAN_COUP;
             this->_last_action = Action::coup;
-            this->_Pgame->end_turn();
+            this->Pgame->end_turn();
         }
-        if (this->_coins < 7 && this->_coins >= 3){
+        if (this->_coins < CAN_COUP && this->_coins >= 3){
             if (p.is_dead()){
                 throw std::logic_error("he is already dead");
             }
@@ -37,7 +37,7 @@ namespace coup{
             this->_killed = &p;
             this->_coins -= 3;
             this->_last_action = Action::Assassin_coup;
-            this->_Pgame->end_turn();
+            this->Pgame->end_turn();
         }
     }
 }

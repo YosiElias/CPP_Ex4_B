@@ -14,8 +14,10 @@ namespace coup {
 
     public:
         Duke(Game &g, std::string name):Player(g, name){ this->_role="Duke";};
+//        virtual ~Duke(){std::cout << "delete Duke for player" <<std::endl;};
+        ~Duke() = default;
         void tax();
-        void block(Player &p);
+        void block(Player p);
 
     }; // end of class Duke
 }

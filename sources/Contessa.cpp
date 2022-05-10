@@ -30,7 +30,7 @@ namespace coup{
         if (!was_killed->is_dead()){
             throw std::logic_error("was_killed not dead (Contessa)");
         }
-        this->_Pgame->find_index_of_player(was_killed); //check if the players not completely dead if yes throw an error of players not found
+        this->Pgame->find_index_of_player(*was_killed); //check if the players not completely dead if yes throw an error of players not found
         was_killed->back2life();
         pAssassin->_last_action = Action::No_action; //already get blocked
     }

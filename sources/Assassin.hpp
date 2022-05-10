@@ -12,11 +12,11 @@
 namespace coup {
     class Assassin:public Player  {
 
-    private:
-        Player * _killed;
-
     public:
         Assassin(Game &g, std::string name):Player(g, name){ this->_role="Assassin";};
+        ~Assassin()= default;
+//            delete this->_killed;
+//            std::cout << "delete Assassin for player" <<std::endl;};
         void coup (Player &p);
         Player* get_killed(){return this->_killed;};
 

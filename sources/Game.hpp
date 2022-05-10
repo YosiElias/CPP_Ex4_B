@@ -16,6 +16,7 @@
 
 #include <iostream>
 #include <vector>
+#include <memory>
 #include "Player.hpp"
 namespace coup {
     class Player;
@@ -27,6 +28,9 @@ namespace coup {
         std::vector<std::string> _players_names;
         std::vector<Player *> _players;
         unsigned long _turn;
+        const size_t INF = 9999;
+        const size_t MAX_PLAYERS = 6;
+//        std::vector<std::shared_ptr<Player>> _players;
 //        int _id;      //Todo: not needed
 //        std::vector<int> _players_ID;     //Todo: not needed
 //        std::vector<bool> _is_dead;       //Todo: not needed
@@ -34,19 +38,22 @@ namespace coup {
 
     public:
         Game();
+        ~Game() = default;
         std::string turn();
         Player* turn_pointer();
         std::vector<std::string> players();
         std::string winner();
-//        int add_player(const std::string &p);   //Todo: not needed
-        void add_player(Player* Pplayer);
+        void add_player(Player &Pplayer);
         void end_turn(){
             this->_turn = (this->_turn+1)% this->_players_names.size();
         };
-        void remove_player(Player * Pp);
-        int find_index_of_player(Player* Pp);
-//        bool check_player_is_dead(Player *Pp);    //Todo: not needed
+        void remove_player(Player &Pp);
+        int find_index_of_player(Player &Pp);
+        std::vector<Player *> get_Pp(){return this->_players;};
+        bool start = false;
 
+//        int add_player(const std::string &p);   //Todo: not needed
+//        bool check_player_is_dead(Player *Pp);    //Todo: not needed
 
     }; // end of class Game
 }
